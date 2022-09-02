@@ -1,0 +1,231 @@
+$vertFonce: #004E63;
+$vertGris: #E2E9E9;
+$blanc: #F8FBFB;
+$noir: #122023;
+$jaune: #F8F158;
+$bleuClair: #26fff4;
+
+body,
+main {
+    font-family: 'Roboto Slab', serif;
+    margin: 0;
+    background-color: #E2E9E9;
+    overflow-x: hidden;
+
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+}
+
+p {
+    font-family: 'Roboto Slab', serif;
+    color: $noir;
+}
+
+.content-video {
+    img {
+        position: relative;
+        z-index: 5;
+    }
+
+    .title-revealed {
+        opacity: 0;
+        animation: text-visible 1s linear forwards;
+        animation-delay: 1.5s;
+    }
+
+    h1 {
+        position: absolute;
+        z-index: 10;
+        bottom: -12%;
+        font-style: normal;
+        font-weight: 900;
+        text-transform: uppercase;
+        color: $bleuClair;
+        left: 19%;
+
+        .h-efp {
+            font-size: 140px;
+            line-height: 110px;
+            letter-spacing: 0.25em;
+        }
+
+        .has-animation::after {
+            content: "";
+            top: 0;
+            left: 0;
+            position: absolute;
+            width: 0%;
+            height: 100%;
+            background: $bleuClair;
+            // only one time animation
+            animation: effect-block 2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+            animation-delay: .1s;
+        }
+
+        .h-entreprise {
+            font-size: 80px;
+            line-height: 80px;
+            letter-spacing: 0.25em;
+        }
+
+        .h-peinture {
+            font-size: 80px;
+            line-height: 80px;
+            letter-spacing: 0.25em;
+            letter-spacing: 0.1875em;
+        }
+    }
+
+}
+
+// CSS COMMUN // 
+.container-content {
+    width: 100%;
+
+    .indic {
+        position: absolute;
+        transform-origin: 0 0;
+        transform: rotate(90deg);
+        text-transform: uppercase;
+        font-family: 'Zen Kaku Gothic New', sans-serif;
+        color: $vertFonce;
+        right: -5em;
+        margin-top: -5em;
+        font-size: 11.5px;
+        padding: 5px;
+        z-index: 11;
+        background-color: $vertGris
+    }
+}
+
+.content-box {
+    padding: 0 80px 0 80px;
+}
+
+.dashed-top {
+    background-image: linear-gradient(to right,
+            $vertGris 66%,
+            rgba(255, 255, 255, 0) 0%);
+    background-position: top;
+    background-size: 25px 2px;
+    background-repeat: repeat-x;
+}
+
+.dashed::before {
+    background-position: left;
+    width: 2px;
+}
+
+.dashed::after {
+    background-position: right;
+    right: 80px;
+    z-index: 5;
+    width: 5px;
+}
+
+.dashed::after,
+.dashed::before {
+    content: "";
+    position: absolute;
+    min-height: 100vh;
+    z-index: 10;
+    background-image: linear-gradient($vertGris 66%, rgba(255, 255, 255, 0) 0%);
+    background-size: 2px 25px;
+    background-repeat: repeat-y;
+}
+
+// RESPONSIVE //
+@media (max-width: 768px) {
+
+    .content-box {
+        padding: 0;
+    }
+
+    .dashed::after {
+        right: 0;
+    }
+
+    //CSS CONTENU
+    .content-video {
+        img {
+            top: 70px;
+            z-index: 11;
+        }
+
+        h1 {
+            font-style: normal;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #26fff4;
+            display: block;
+            margin: 0 auto;
+            bottom: unset;
+            z-index: 12;
+            margin-top: -20px;
+
+            .h-efp {
+                font-size: 50px;
+                letter-spacing: .875em;
+                line-height: 35px;
+            }
+
+            .h-entreprise {
+                font-size: 22px;
+                line-height: 20px;
+            }
+
+            .h-peinture {
+                font-size: 22px;
+                line-height: 20px;
+                letter-spacing: 0.25em;
+                letter-spacing: 0.1875em;
+            }
+        }
+    }
+
+}
+
+// ANIMATIONS //
+@keyframes slideUp {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(-40px);
+        opacity: 1;
+    }
+}
+
+@keyframes text-visible {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes effect-block {
+    0% {
+        left: 0;
+        width: 0%;
+    }
+
+    50% {
+        left: 0;
+        width: 100%;
+    }
+
+    100% {
+        left: 100%;
+        width: 0%;
+    }
+}

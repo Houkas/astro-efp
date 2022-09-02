@@ -1,0 +1,55 @@
+---
+import Layout from "../layouts/Layout.astro";
+import LastRealisations from "../components/LastRealisations.svelte";
+import Description from "../components/Description.svelte";
+import LastArticles from "../components/LastArticles.svelte";
+import "../css/styles.scss";
+---
+
+<Layout title="Welcome to Astro.">
+
+	<div class="content-container">
+		<section class="container-content">
+			<div class="content-video mx-auto">
+				<video autoplay loop muted>
+					<source src="/intro2.mp4" type="video/mp4" />
+					Your browser does not support the video tag.
+				</video>
+
+				<h1 class="flex flex-col">
+					<span class="h-efp">EFP</span>
+					<span class="h-entreprise">entreprise</span>
+					<span class="h-peinture">de peinture</span>
+				</h1>
+			</div>
+		</section>
+
+		<section class="container-content">
+			<div
+				class="flex flex-row items-center dashed dashed-top min-h-screen mx-auto content-box"
+			>
+				<Description/>
+			</div>
+		</section>
+
+		<section class="container-content">
+			<div
+				class="dashed dashed-top min-h-screen mx-auto content-box flex flex-col lg:flex-row lg:items-center"
+			>
+				<LastRealisations/>
+			</div>
+		</section>
+
+		<section class="container-content">
+			<div
+				class="dashed dashed-top min-h-screen mx-auto content-box flex flex-col lg:flex-row lg:items-center relative z-20"
+			>
+				<LastArticles/>
+			</div>
+		</section>
+	</div>
+</Layout>
+
+<style>
+
+</style>
