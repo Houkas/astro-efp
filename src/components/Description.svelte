@@ -92,7 +92,7 @@
     }
   }
 
-  .grey-rec::before {
+  /*.grey-rec::before {
     content: "";
     position: absolute;
     height: 60vh;
@@ -102,7 +102,7 @@
     right: -25%;
     top: -25%;
     animation: rotation 60s infinite linear;
-  }
+  }*/
 
   .depot {
     width: 420px;

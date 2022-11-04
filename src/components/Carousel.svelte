@@ -3,8 +3,13 @@
   import type { Realisation } from "../types/realisation";
   import { fade, slide } from "svelte/transition";
   //import { urlStrapiEfpDEV } from "../../shared/config";
-  const firstRel: Realisation = {
+  let firstRel: Realisation = {
     attributes: {
+      title: "test",
+      createdAt:"test",
+      meta_description:"test",
+      images:"test",
+      body: "test",
       slug: "test",
       miniature: {
         data: {
@@ -13,8 +18,13 @@
       },
     },
   };
-  const secondtRel: Realisation = {
+  let secondtRel: Realisation = {
     attributes: {
+      title: "test",
+      createdAt:"test",
+      meta_description:"test",
+      images:"test",
+      body: "test",
       slug: "test",
       miniature: {
         data: {
@@ -23,8 +33,13 @@
       },
     },
   };
-  const thirdRel: Realisation = {
+  let thirdRel: Realisation = {
     attributes: {
+      title: "test",
+      createdAt:"test",
+      meta_description:"test",
+      images:"test",
+      body: "test",
       slug: "test",
       miniature: {
         data: {
@@ -83,6 +98,7 @@
 {#each [realisations[index]] as real (index)}
   <div class="container-carousel w-screen lg:w-[55vw] absolute">
     <a href={"/realisations/" + real.attributes.slug} class="link">
+      <!-- svelte-ignore a11y-mouse-events-have-key-events -->
       <img
         src={real.attributes.miniature.data.attributes.url}
         transition:fade
@@ -118,8 +134,8 @@
 <style lang="scss">
   .container-carousel {
     button {
-      border-radius: 20px;
-      background-color: #004e63;
+      border-radius: 30px;
+      background-color: #E2E9E9;
       transition: transform ease-in 0.1s;
       //background: linear-gradient(51.03deg, rgba(248, 241, 88, 0) -10.35%, rgba(248, 241, 88, 0.2) -5.3%, rgba(178, 236, 194, 0.3722) 23.92%, rgba(153, 243, 255, 0.6459) 60.2%, rgba(130, 247, 255, 0.8643) 72.08%, #79FFFF 85.02%, #79FFFF 85.03%);
     }

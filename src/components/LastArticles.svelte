@@ -1,35 +1,79 @@
 <script lang="ts">
   import { fade, slide } from "svelte/transition";
   import { expoInOut } from "svelte/easing";
-  //import { apiArticlesData } from "../../shared/store";
   import type { Article } from "../types/article";
-  //import { urlStrapiEfpDEV } from "../../shared/config";
   import Blob from "./Blob.svelte";
+  import { onMount } from "svelte";
 
   $: yScrollUser = 0;
   $: deviceWidth = 0;
   let yScrollUserTrigger: number;
   let yScrollUserTriggerBar: number;
 
-  if (deviceWidth < 640) {
+  onMount(() => {
+    if (deviceWidth < 640) {
     yScrollUserTrigger = 1275;
     yScrollUserTriggerBar = 1320;
   } else if (deviceWidth > 1024) {
-    yScrollUserTrigger = 1800;
-    yScrollUserTriggerBar = 1800;
+    yScrollUserTrigger = 2490;
+    yScrollUserTriggerBar = 2490;
   }
+  });
 
   let articles: Article[] = [];
 
-  /*apiArticlesData.subscribe((values) => {
-      articles = values;
-    });*/
+  let firstRel: Article = {
+    attributes: {
+      title: "test",
+      createdAt:"test",
+      meta_description:"test",
+      body: "test",
+      slug: "test",
+      miniature: {
+        data: {
+          attributes: { url: "/depot-efp.jpg" },
+        },
+      },
+    },
+  };
+  let secondtRel: Article = {
+    attributes: {
+      title: "test",
+      createdAt:"test",
+      meta_description:"test",
+      body: "test",
+      slug: "test",
+      miniature: {
+        data: {
+          attributes: { url: "/depot-efp.jpg" },
+        },
+      },
+    },
+  };
+  let thirdRel: Article = {
+    attributes: {
+      title: "test",
+      createdAt:"test",
+      meta_description:"test",
+      body: "test",
+      slug: "test",
+      miniature: {
+        data: {
+          attributes: { url: "/depot-efp.jpg" },
+        },
+      },
+    },
+  };
+  articles.push(firstRel);
+  articles.push(secondtRel);
+  articles.push(thirdRel);
 
   articles = articles.sort(
     (a, b) =>
       Date.parse(b.attributes.createdAt) - Date.parse(a.attributes.createdAt)
   );
   articles = articles.slice(0, 3);
+
 </script>
 <svelte:window
   bind:scrollY={yScrollUser}
@@ -40,7 +84,7 @@
   class="lg:h-screen w-screen lg:w-1/3 flex flex-col lg:flex-row items-center justify-center"
 >
   <a href="/articles">
-    {#if yScrollUser >= yScrollUserTrigger && deviceWidth > 1024}
+    {#if yScrollUser > yScrollUserTrigger && deviceWidth > 1024}
       <h2
         class="{yScrollUser >= yScrollUserTrigger
           ? 'anim-txt-lft'

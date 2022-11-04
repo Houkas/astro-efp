@@ -2,23 +2,22 @@
   import { fade, slide } from "svelte/transition";
   import { expoInOut } from "svelte/easing";
   import Carousel from "./Carousel.svelte";
+  import { onMount } from "svelte";
 
   $: yScrollUser = 0;
   $: deviceWidth = 0;
   let yScrollUserTrigger: number;
 
-  if (deviceWidth < 640) {
-    yScrollUserTrigger = 380;
-  } else if (deviceWidth > 1280) {
-    yScrollUserTrigger = 1265;
-  }
+  onMount(() => {
+    if (deviceWidth < 640) {
+      yScrollUserTrigger = 380;
+    } else if (deviceWidth > 1280) {
+      yScrollUserTrigger = 1820;
+    }
+  });
 </script>
 
-<svelte:window
-  bind:scrollY={yScrollUser}
-  bind:innerWidth={deviceWidth}
-/>
-
+<svelte:window bind:scrollY={yScrollUser} bind:innerWidth={deviceWidth} />
 <div
   class="lg:h-screen w-screen lg:w-1/3 flex flex-col lg:flex-row items-center"
 >
@@ -28,7 +27,7 @@
       class="cicle-gradient absolute block content-[''] bg-[url('/circle_degrade.svg')] w-[40vh] h-[40vh] z-[-1] mt-[-10vh]"
     />
     <h2
-      class={yScrollUser >= yScrollUserTrigger ? "anim-txt-lft" : "opacity-0"}
+      class={yScrollUser > yScrollUserTrigger ? "anim-txt-lft" : "opacity-0"}
       out:fade
     >
       Réalisations

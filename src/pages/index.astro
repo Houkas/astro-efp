@@ -6,7 +6,7 @@ import LastArticles from "../components/LastArticles.svelte";
 import "../css/styles.scss";
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="EFP - Entreprise Familliale de Peinture - Sauveterre de Guyenne en Gironde" client:load>
 
 	<div class="content-container">
 		<section class="container-content">
@@ -28,7 +28,7 @@ import "../css/styles.scss";
 			<div
 				class="flex flex-row items-center dashed dashed-top min-h-screen mx-auto content-box"
 			>
-				<Description/>
+				<Description client:load/>
 			</div>
 		</section>
 
@@ -36,7 +36,7 @@ import "../css/styles.scss";
 			<div
 				class="dashed dashed-top min-h-screen mx-auto content-box flex flex-col lg:flex-row lg:items-center"
 			>
-				<LastRealisations/>
+				<LastRealisations client:load/>
 			</div>
 		</section>
 
@@ -44,7 +44,7 @@ import "../css/styles.scss";
 			<div
 				class="dashed dashed-top min-h-screen mx-auto content-box flex flex-col lg:flex-row lg:items-center relative z-20"
 			>
-				<LastArticles/>
+				<LastArticles client:load/>
 			</div>
 		</section>
 	</div>

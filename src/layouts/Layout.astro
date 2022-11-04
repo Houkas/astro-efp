@@ -10,7 +10,7 @@ import Footer from '../components/Footer.svelte';
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -19,9 +19,9 @@ import Footer from '../components/Footer.svelte';
 		<title>{title}</title>
 	</head>
 	<body>
-		<Header></Header>
+		<Header client:load></Header>
 		<slot />
-		<Footer></Footer>
+		<Footer client:load></Footer>
 	</body>
 </html>
 <style>
