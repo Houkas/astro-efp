@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/Layout.astro
+layout: ../../layouts/ArticleLayout.astro
 title: Blog Post
 description: My first blog article!
 ---

@@ -120,7 +120,7 @@
         class="bg-degrade absolute w-1/2 lg:w-1/4 h-[90%] z-[-1] "
       />
     {/if}
-    <div class="flex flex-col justify-center img-container">
+    <div class="flex flex-col h-screen justify-center img-container">
       {#each articles as article, i}
         <a href={"/articles/" + article.attributes.slug}>
           <div class="relative">
