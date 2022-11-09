@@ -4,81 +4,79 @@
   import type { Article } from "../types/article";
   import Blob from "./Blob.svelte";
   import { onMount } from "svelte";
+  import type { MarkdownInstance } from "astro";
 
   $: yScrollUser = 0;
   $: deviceWidth = 0;
   let yScrollUserTrigger: number;
   let yScrollUserTriggerBar: number;
 
-  onMount(() => {
+  onMount(async () => {
     if (deviceWidth < 640) {
-    yScrollUserTrigger = 1275;
-    yScrollUserTriggerBar = 1320;
-  } else if (deviceWidth > 1024) {
-    yScrollUserTrigger = 2490;
-    yScrollUserTriggerBar = 2490;
-  }
+      yScrollUserTrigger = 1275;
+      yScrollUserTriggerBar = 1320;
+    } else if (deviceWidth > 1024) {
+      yScrollUserTrigger = 2490;
+      yScrollUserTriggerBar = 2490;
+    }
+
+    /*const astroArticles = await import.meta.glob("../pages/articles/*.md");
+    let articlesWithData: Article[] = [];
+    debugger;
+    console.log(astroArticles);
+    debugger;
+    astroArticles.forEach((art) => {
+    var article: Article = {
+      title: art.frontmatter.title,
+      meta_description: art.frontmatter.meta_description,
+      miniature_url: art.frontmatter.miniature,
+      slug: art.url,
+      body: "",
+      created_at: "",
+    };
+    articlesWithData.push(article);
+    });*/
   });
 
   let articles: Article[] = [];
 
+  
+
   let firstRel: Article = {
-    attributes: {
-      title: "test",
-      createdAt:"test",
-      meta_description:"test",
-      body: "test",
-      slug: "test",
-      miniature: {
-        data: {
-          attributes: { url: "/depot-efp.jpg" },
-        },
-      },
-    },
+    title: "test",
+    created_at: "test",
+    meta_description: "test",
+    body: "test",
+    slug: "test",
+    miniature_url: "/depot-efp.jpg",
   };
   let secondtRel: Article = {
-    attributes: {
-      title: "test",
-      createdAt:"test",
-      meta_description:"test",
-      body: "test",
-      slug: "test",
-      miniature: {
-        data: {
-          attributes: { url: "/depot-efp.jpg" },
-        },
-      },
-    },
+    title: "test",
+    created_at: "test",
+    meta_description: "test",
+    body: "test",
+    slug: "test",
+    miniature_url: "/depot-efp.jpg",
   };
   let thirdRel: Article = {
-    attributes: {
-      title: "test",
-      createdAt:"test",
-      meta_description:"test",
-      body: "test",
-      slug: "test",
-      miniature: {
-        data: {
-          attributes: { url: "/depot-efp.jpg" },
-        },
-      },
-    },
+    title: "test",
+    created_at: "test",
+    meta_description: "test",
+    body: "test",
+    slug: "test",
+    miniature_url: "/depot-efp.jpg",
   };
   articles.push(firstRel);
   articles.push(secondtRel);
   articles.push(thirdRel);
 
   articles = articles.sort(
-    (a, b) =>
-      Date.parse(b.attributes.createdAt) - Date.parse(a.attributes.createdAt)
+    (a, b) => Date.parse(b.created_at) - Date.parse(a.created_at)
   );
   articles = articles.slice(0, 3);
-
 </script>
-<svelte:window
-  bind:scrollY={yScrollUser}
-  bind:innerWidth={deviceWidth}
-/>
+
+<svelte:window bind:scrollY={yScrollUser} bind:innerWidth={deviceWidth} />
 
 <div
   class="lg:h-screen w-screen lg:w-1/3 flex flex-col lg:flex-row items-center justify-center"
@@ -122,11 +120,11 @@
     {/if}
     <div class="flex flex-col h-screen justify-center img-container">
       {#each articles as article, i}
-        <a href={"/articles/" + article.attributes.slug}>
+        <a href={"/articles/" + article.slug}>
           <div class="relative">
             <div class="relative max-w-xs overflow-hidden">
               <img
-                src={article.attributes.miniature.data.attributes.url}
+                src={article.miniature_url}
                 alt=""
                 class="object-cover w-full h-full "
               />
@@ -134,7 +132,7 @@
                 class="absolute w-full h-[84%] h-[-webkit-fill-available]  mt-[20px] mb-[20px] py-2.5 text-center leading-4 bg-[#E2E9E9]/[.75] top-0 flex items-center justify-center"
               >
                 <h3 class="text-[#004E63] text-2xl">
-                  {article.attributes.title}
+                  {article.title}
                 </h3>
               </div>
             </div>
