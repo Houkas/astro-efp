@@ -1,0 +1,15 @@
+---
+interface Frontmatter {
+  title: string;
+  description?: string;
+}
+import Layout from '../layouts/Layout.astro';
+import Articles from '../components/Articles.svelte';
+
+const articles = Astro.glob<Frontmatter>('../pages/articles/*.md');
+---
+<Layout title="Articles page">
+    <main>
+        <Articles articles={articles}></Articles>
+    </main>
+</Layout>
