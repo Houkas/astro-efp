@@ -20,10 +20,6 @@
   />
 {/if}
 
-<!--
-          Trouver une solution pour que ce contenu soit bien indexé par le crawler google
-          car il est n'est pas dans le dom tant que scroll y < 400
-  -->
 {#if (yScrollUser > 400 && deviceWidth > 1280) || (yScrollUser >= 0 && deviceWidth < 640)}
   <div
     transition:slide={{ delay: 250, duration: 1000, easing: expoInOut }}

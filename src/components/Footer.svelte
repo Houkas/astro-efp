@@ -4,13 +4,12 @@
   <div class="container-footer md:flex md:items-center md:justify-between ">
     <span class="text-sm">
       <b>EFP - Entreprise familliale de peinture</b><br />
-      EFP4@wanadoo.fr<br />
+      <!--EFP4@wanadoo.fr<br />-->
       Sauveterre de Guyenne - 33540 France
     </span>
     <img src="/logo-efp-without-txt.png" class="logo-efp" alt="" />
     <span class="text-sm text-right">
-      Peinture intérieur - exterieur<br />
-      vitrage & sol
+      Peinture intérieur - exterieur - vitrage - sol
     </span>
   </div>
 </footer>

@@ -3,10 +3,8 @@ layout: ../../layouts/ArticleLayout.astro
 title: Comment choisir sa peinture ? 
 description: Description comment choisir sa peinture ?
 meta_description: Coomment choisir sa peinture ? Peinture naturelle ...
-miniature: /public/miniatures/miniature_efp.jpg
+miniature: /miniatures/miniature_efp.jpg
 ---
-
-#Comment choisir sa peinture ?
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac orci libero. Vestibulum commodo cursus nulla, in elementum elit fermentum sit amet. Aenean ultricies lorem eros, sed tristique arcu molestie et. Suspendisse egestas nisi id eros hendrerit luctus. Cras nec nulla nec libero aliquet lobortis. Quisque egestas eget quam eget volutpat. Mauris eleifend nec libero sed volutpat. Quisque maximus felis sapien, nec ullamcorper nulla iaculis et. Sed pretium tempus congue.
 
