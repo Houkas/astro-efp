@@ -1,23 +1,34 @@
 <script>
   import { fade } from "svelte/transition";
-  import { onMount } from "svelte";
+  import { onMount, onDestroy } from "svelte";
+
+  let isAnimatedBarVisible = true;
+  let isDeviceMobile = false;
   let url = "";
+  let isMenuOpen = false;
+  $: y = 0;
+  $: deviceWidth = 0;
+  $: deviceHeight = 0;
+  $: isHomePage = url == "/" ? true : false;
+
+
   onMount(() => {
     url = window.location.pathname;
     if (deviceWidth < 640) {
       isDeviceMobile = true;
     }
   });
-  $: isHomePage = url == "/" ? true : false;
-  let isMenuOpen = false;
+
+  onDestroy(() => (isAnimatedBarVisible = true));
+
+  setTimeout(function () {
+    isAnimatedBarVisible = false;
+  }, 1500);
 
   function openMobileMenu() {
     isMenuOpen = !isMenuOpen;
   }
-  let isDeviceMobile = false;
-  $: y = 0;
-  $: deviceWidth = 0;
-  $: deviceHeight = 0;
+
 </script>
 
 <svelte:window
@@ -108,11 +119,24 @@
       transition:fade
       class="z-[49] fixed bg-[#F8FBFB] w-screen h-screen py-[70px]"
     >
-      <div class="w-full h-full md:block md:w-auto" id="mobile-menu">
+      <div
+        class="flex flex-row justify-center w-full h-full md:block md:w-auto"
+        id="mobile-menu"
+      >
+        <div
+          class="bg-degrade absolute  w-1/2 lg:w-1/4 h-[98%] lg:h-[90%] slide-tb {isAnimatedBarVisible === true
+            ? 'z-[9]'
+            : 'z-0'}"
+          id="animated-bar"
+        />
+
         <ul
           class="h-full flex flex-col items-center justify-center mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium"
         >
-          <li transition:fade class="py-6 {isHomePage === true ? "hidden" : ""}">
+          <li
+            transition:fade
+            class="py-6 {isHomePage === true ? 'hidden' : ''}"
+          >
             <a href="/" class="block py-2 pr-4 pl-3 md:p-0 text-center "
               >Accueil</a
             >
@@ -144,6 +168,9 @@
 </nav>
 
 <style lang="scss">
+  .bg-degrade {
+    background: linear-gradient(180deg, #7dfeff 0%, #e0f8bc 100%);
+  }
   @keyframes slidein {
     from {
       margin-left: -10px;
@@ -155,6 +182,26 @@
   nav {
     min-width: 100%;
     z-index: 25;
+  }
+  .slide-tb {
+    opacity: 0;
+    animation-name: SlideTb;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    animation-duration: 0.75s;
+  }
+  @keyframes SlideTb {
+    0% {
+      opacity: 1;
+      height: 0;
+    }
+    50% {
+      height: 100vh;
+    }
+    100% {
+      opacity: 1;
+      height: 0;
+    }
   }
   .fade-in {
     opacity: 1;
@@ -234,7 +281,6 @@
       a {
         font-size: 2em;
         font-weight: 800;
-
       }
     }
   }

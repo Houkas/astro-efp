@@ -1,0 +1,30 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Articles from "../components/Articles.svelte";
+import type { MarkdownInstance } from "astro";
+import type { Article } from "../types/article";
+
+let astroArticles: MarkdownInstance<Record<string, any>>[];
+
+astroArticles = await Astro.glob("../pages/realisations/*.md");
+
+let articlesWithData: Article[] = [];
+
+astroArticles.forEach((art) => {
+  const article: Article = {
+    title: art.frontmatter.title,
+    meta_description: art.frontmatter.meta_description,
+    miniature_url: art.frontmatter.miniature,
+    slug: art.url,
+    body: "",
+    created_at: ''
+  };
+  articlesWithData.push(article);
+});
+---
+
+<Layout title="Articles page">
+  <main>
+    <Articles articles={articlesWithData} />
+  </main>
+</Layout>
