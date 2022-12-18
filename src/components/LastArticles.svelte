@@ -15,32 +15,16 @@
     if (deviceWidth < 640) {
       yScrollUserTrigger = 1275;
       yScrollUserTriggerBar = 1320;
-    } else if (deviceWidth > 1024) {
-      yScrollUserTrigger = 2490;
-      yScrollUserTriggerBar = 2490;
+    } else if (deviceWidth > 1024 && deviceWidth < 1600) {
+      yScrollUserTrigger = 1900;
+      yScrollUserTriggerBar = 1900;
+    } else if (deviceWidth > 1600) {
+      yScrollUserTrigger = 2450;
+      yScrollUserTriggerBar = 2450;
     }
-
-    /*const astroArticles = await import.meta.glob("../pages/articles/*.md");
-    let articlesWithData: Article[] = [];
-    debugger;
-    console.log(astroArticles);
-    debugger;
-    astroArticles.forEach((art) => {
-    var article: Article = {
-      title: art.frontmatter.title,
-      meta_description: art.frontmatter.meta_description,
-      miniature_url: art.frontmatter.miniature,
-      slug: art.url,
-      body: "",
-      created_at: "",
-    };
-    articlesWithData.push(article);
-    });*/
   });
 
   let articles: Article[] = [];
-
-  
 
   let firstRel: Article = {
     title: "test",

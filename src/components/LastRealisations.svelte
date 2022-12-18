@@ -12,12 +12,14 @@
     if (deviceWidth < 640) {
       yScrollUserTrigger = 380;
     } else if (deviceWidth > 1280) {
-      yScrollUserTrigger = 1820;
+
+      yScrollUserTrigger = 1250;
     }
   });
 </script>
 
 <svelte:window bind:scrollY={yScrollUser} bind:innerWidth={deviceWidth} />
+
 <div
   class="lg:h-screen w-screen lg:w-1/3 flex flex-col lg:flex-row items-center"
 >
