@@ -49,6 +49,8 @@
     right: 80px;
   }
   footer {
+    position: relative;
+    z-index: 999;
     min-height: 162px;
     background-color: #E2E9E9;
     font-family: "Zen Kaku Gothic New", sans-serif;
