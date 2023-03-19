@@ -96,11 +96,11 @@
                 >Réalisations</a
               >
             </li>
-            <li>
+            <!--<li>
               <a href="/partenaires" class="block py-2 pr-4 pl-3 md:p-0"
                 >Partenaires</a
               >
-            </li>
+            </li>-->
             <li>
               <a href="/articles" class="block py-2 pr-4 pl-3 md:p-0"
                 >Articles</a
@@ -147,12 +147,12 @@
               class="block py-2 pr-4 pl-3 md:p-0 text-center ">Réalisations</a
             >
           </li>
-          <li class="py-6">
+          <!--<li class="py-6">
             <a
               href="/partenaires"
               class="block py-2 pr-4 pl-3 md:p-0 text-center ">Partenaires</a
             >
-          </li>
+          </li>-->
           <li class="py-6">
             <a href="/articles" class="block py-2 pr-4 pl-3 md:p-0 text-center "
               >Articles</a
